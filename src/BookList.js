@@ -9,6 +9,9 @@ class BookList extends Component {
     getBooks: PropTypes.func.isRequired,
     updateBookShelf: PropTypes.func.isRequired
   };
+  /**
+   * @description On Component mount get books
+   */
   componentDidMount() {
     this.props.getBooks();
   }

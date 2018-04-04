@@ -11,6 +11,9 @@ class BooksApp extends React.Component {
     books: [],
     searchedBooks: []
   };
+  /**
+   * @description Get all books and set it to books state
+   */
   getAllBooks = () => {
     BooksAPI.getAll().then(books => {
       this.setState(() => ({
@@ -18,6 +21,11 @@ class BooksApp extends React.Component {
       }));
     });
   };
+  /**
+   * @description Search book and add shelf if books are already added to shelf.
+   * Min text required for search is 2 charecters
+   *  @param {string} value query text
+   */
   searchBooks = value => {
     if (value.trim().length > 1) {
       BooksAPI.search(value).then(searchedBooks => {
@@ -45,6 +53,11 @@ class BooksApp extends React.Component {
       }));
     }
   };
+  /**
+   * @description Update book to selected shelf
+   * @param {object} book book object
+   * @param {string} shelf to which book has to be moved
+   */
   updateBookShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(book => {
       this.getAllBooks();
